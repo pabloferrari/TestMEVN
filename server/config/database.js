@@ -1,5 +1,8 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-let connectDB = 'mongodb://localhost/mydb';
+let connectDB = process.env.URI || 'mongodb://localhost/mydb';
+console.log(`connection -> ${connectDB}`);
+
 
 mongoose.Promise = global.Promise;
 mongoose.set('useCreateIndex', true);

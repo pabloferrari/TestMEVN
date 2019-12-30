@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from "axios";
+import VueAxios from 'vue-axios'
 
 Vue.use(Vuex)
+Vue.use(VueAxios, axios)
 
 export default new Vuex.Store({
   state: {
@@ -17,7 +19,7 @@ export default new Vuex.Store({
     //cats
     getUsersList(context) {
       context.commit("SET_USERS_LIST", []);
-      axios.get("http://localhost:3000/getUsers")
+      Vue.axios.get("http://localhost:3000/getUsers")
       .then(({ data }) => {
         context.commit("SET_USERS_LIST", data.users);
       })

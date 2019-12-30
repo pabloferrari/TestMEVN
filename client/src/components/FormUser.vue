@@ -52,7 +52,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import axios from "axios";
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+ 
+Vue.use(VueAxios, axios)
+
 import { urlServer } from "../../environment";
 
 export default {
@@ -72,7 +77,7 @@ export default {
         saveUser(){
             let dataUser = {username:this.username,email:this.email,firstName:this.firstName,lastName:this.lastName};
             if(this.$route.params.id){
-                axios.put(`${urlServer}/updateUser/${this.$route.params.id}`,dataUser)
+                Vue.axios.put(`${urlServer}/updateUser/${this.$route.params.id}`,dataUser)
                 .then(res => {
                     if(res.status == 200)
                     this.$router.push({ path: '/' });
@@ -85,7 +90,7 @@ export default {
                     }
                 });
             }else{
-                axios.post(`${urlServer}/addUser`,dataUser)
+                Vue.axios.post(`${urlServer}/addUser`,dataUser)
                 .then(res => {
                     if(res.status == 200)
                     this.$router.push({ path: '/' });

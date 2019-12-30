@@ -35,8 +35,12 @@
 
 <script>
 import { mapState,mapActions } from 'vuex';
-import axios from "axios";
 import { urlServer } from "../../environment";
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios, axios)
 
 export default {
   name: 'UserList',
@@ -50,7 +54,7 @@ export default {
     deleteItem(user){
       if (!confirm(`¿Confirma eliminar el usuario: ${user.firstName} ${user.lastName}?`))
       return false;
-      axios.delete(`${urlServer}/delUser`,{data:{id:user._id}})
+      Vue.axios.delete(`${urlServer}/delUser`,{data:{id:user._id}})
       .then(res => {
         if(res)
         this.getUsersList()
