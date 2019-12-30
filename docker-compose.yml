@@ -1,0 +1,26 @@
+
+version: '3'
+services:
+  server:
+    container_name: server
+    build: ./server
+    working_dir: /app
+    links:
+      - mongodb
+    environment:
+      URI: mongodb://mongo_mevn/mydb
+    ports:
+      - "3000:3000"
+    command: npm start
+  mongodb:
+    container_name: mongo_mevn
+    image: mongo
+    ports:
+      - "27017:27017"
+  client:
+    container_name: client
+    build: ./client
+    working_dir: /client
+    ports:
+      - "8080:8080"
+    command: npm run serve
