@@ -1,45 +1,53 @@
 <template>
-  <div uk-grid>
-    <form class="uk-form-horizontal uk-margin-large" @submit.prevent="saveUser()">
-        <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-text">Username</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="username" id="username" v-model="username">
+    <div>
+        <div uk-grid>
+            <div class="uk-align-center">  
+                <form class="uk-form-horizontal uk-margin-large" @submit.prevent="saveUser()">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Username</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" type="text" name="username" id="username" v-model="username">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Email</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" type="email" name="email" id="email" v-model="email">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Nombre</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" type="text" name="firstName" id="firstName" v-model="firstName">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Apellido</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" type="text" name="lastName" id="lastName" v-model="lastName">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <div class="uk-form-controls">
+                            <button class="uk-button uk-button-primary" type="submit">{{ messageButton }}</button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
-
-        <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-text">Email</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="email" name="email" id="email" v-model="email">
+        <div uk-grid>
+            <div class="uk-align-center"> 
+                <div class="uk-alert-danger" uk-alert v-if="messageError">
+                    <p>{{messageError}}</p>
+                </div>
             </div>
         </div>
-
-        <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-text">Nombre</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="firstName" id="firstName" v-model="firstName">
-            </div>
-        </div>
-
-        <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-text">Apellido</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="lastName" id="lastName" v-model="lastName">
-            </div>
-        </div>
-
-        <div class="uk-margin">
-            <div class="uk-form-controls">
-                <button class="uk-button uk-button-primary" type="submit">{{ messageButton }}</button>
-            </div>
-        </div>
-
-    </form>
-
-    <span>{{ messageError }}</span>
-
-  </div>
+    </div>
 </template>
 
 <script>
