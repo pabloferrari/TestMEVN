@@ -8,5 +8,8 @@ router.delete('/delUser', UsersController.delete);
 router.get('/getUsers', UsersController.index);
 router.put('/updateUser/:id', UsersController.update);
 
-module.exports = router;
+router.get('*', (req,res) => {
+    res.json({error:"route not found"});
+});
 
+module.exports = router;
